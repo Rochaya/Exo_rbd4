@@ -6,11 +6,12 @@ def size(journalists)
     var2 = journalists.sort {|l, r| l.length <=> r.length}
     puts "#{var1.length} element dans la liste"
     puts "#{var2[0]} est l'handle le plus court"
+    puts "#{var2}"
 end
 
 # nb d'handle ne comportant que 5 caracteres
 def handle_high(journalists)
-    var3 = journalists.count {|element| element.length == 5 }
+    puts var3 = journalists.select {|element| element.length == 6} #.count autre methode mais ici nous utilisons une methode element
     puts "#{var3} élément(s) contiennent 5 caractères."
 end
 
@@ -22,7 +23,7 @@ end
 
 # Rangement par ordre alphabetique
 def sorting(journalists)
-    var5 = journalists.sort
+    var5 = journalists.sort_by{|element| element.downcase}
     puts var5
 end
 
@@ -32,9 +33,12 @@ def upper(journalists)
     puts " Il y a #{capital} handles qui commencent par une majuscule"
 end 
 
+def perform(journalists)
+    size(journalists)
+    handle_high(journalists)
+    select_epenser(journalists)
+    sorting(journalists)
+    upper(journalists)
+end
 
-size(journalists)
-handle_high(journalists)
-select_epenser(journalists)
-sorting(journalists)
-upper(journalists)
+perform(journalists)
